@@ -7,6 +7,6 @@ module.exports = (app) => {
         Annonces: require('./Annonces'),
         Utilisateurs: require('./Utilisateurs'),
         SousCategories: require('./SousCategories'),
-        Categorie: require('./Categories'),
+        Categories: require('./Categories'),
     };
 };

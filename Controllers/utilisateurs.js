@@ -3,7 +3,9 @@ module.exports = (app) =>{
 
     return {
         list,
-        create
+        create,
+        remove,
+        update
     };
 
     function list(req, res) {
@@ -16,6 +18,21 @@ module.exports = (app) =>{
         nouveau_utilisateur.save()
         res.json(nouveau_utilisateur)
         return
+    }
+
+    function remove(req, res) {
+        Utilisateurs.findByIdAndRemove(req.params.id)
+            .then(()=> {
+                res.status(204).send();
+            })
+    }
+
+    function update(req, res) {
+        Utilisateurs.findByIdAndUpdate(req.params.id, req.body)
+            .then(() => {
+                res.status(204).send();
+            })
+            .catch(err => res.status(500).send(err))
     }
 
 }
